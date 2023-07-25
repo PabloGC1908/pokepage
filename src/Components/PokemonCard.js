@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import '../Stylesheets/PokemonCard.css'
 
-const PokemonCard = (props) => {
+const PokemonCard = ({id}) => {
   const [pokemonId, setPokemonId] = useState(0)
   const [pokemonName, setPokemonName] = useState('')
   const [pokemonImg, setPokemonImg] = useState('')
@@ -9,8 +9,12 @@ const PokemonCard = (props) => {
 
   const URL = 'https://pokeapi.co/api/v2/pokemon/'
 
+  useEffect(() => {
+    getPokemon().then();
+  }, [pokemonId])
+
   const getPokemon = async () => {
-    const response = await fetch(URL.concat(props.id))
+    const response = await fetch(URL.concat(id))
     const pokemonResp = await response.json()
 
     setPokemonId(pokemonResp['id'])
@@ -19,47 +23,43 @@ const PokemonCard = (props) => {
     setPokemonTypes(pokemonResp['types'])
   }
 
-  const getTipo = (elemento, i) => {
-    switch (elemento) {
+  const getType = (element, i) => {
+    switch (element) {
       case 'fire':
-        return <span key={i} style={{backgroundColor: "red"}}>{elemento}</span>
+        return <span key={i} style={{backgroundColor: "red"}}>{element}</span>
       case 'poison':
-        return <span key={i} style={{backgroundColor: "violet"}}>{elemento}</span>
+        return <span key={i} style={{backgroundColor: "violet"}}>{element}</span>
       case 'water':
-        return <span key={i} style={{backgroundColor: "blue"}}>{elemento}</span>
+        return <span key={i} style={{backgroundColor: "blue"}}>{element}</span>
       case 'normal':
-        return <span key={i} style={{backgroundColor: "beige"}}>{elemento}</span>
+        return <span key={i} style={{backgroundColor: "beige"}}>{element}</span>
       case 'grass':
-        return <span key={i} style={{backgroundColor: "green"}}>{elemento}</span>
+        return <span key={i} style={{backgroundColor: "green"}}>{element}</span>
       case 'flying':
-        return <span key={i} style={{backgroundColor: "aqua"}}>{elemento}</span>
+        return <span key={i} style={{backgroundColor: "aqua"}}>{element}</span>
       case 'bug':
-        return <span key={i} style={{backgroundColor: "burlywood"}}>{elemento}</span>
+        return <span key={i} style={{backgroundColor: "burlywood"}}>{element}</span>
       case 'electric':
-        return <span key={i} style={{backgroundColor: "yellow"}}>{elemento}</span>
+        return <span key={i} style={{backgroundColor: "yellow"}}>{element}</span>
       case 'ground':
-        return <span key={i} style={{backgroundColor: "brown"}}>{elemento}</span>
+        return <span key={i} style={{backgroundColor: "brown"}}>{element}</span>
       default:
-        return <span key={i} > {elemento}</span>
+        return <span key={i} > {element}</span>
     }
   }
 
-  useEffect(() => {
-    getPokemon().then();
-    console.log(pokemonTypes.map((type) => console.log(type.type.name)))
-  }, [pokemonId])
+
 
   return (
     <div className={'pokemon-card'}>
-      <div>{pokemonId}</div>
-      <div>{pokemonName}</div>
+      <h3>{pokemonName}</h3>
       <img className={'pokemon-img'} src={pokemonImg} alt={'pokemonImg'}/>
-      <ul>
+      <ul className={'pokemon-types'}>
         {
           pokemonTypes.map((type, index) => (
             <li key={index}>
               {
-                getTipo(type.type.name, index)
+                getType(type.type.name, index)
               }
             </li>
           ))

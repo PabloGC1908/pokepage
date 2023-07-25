@@ -10,3 +10,7 @@
 .pokemon-img {
   width: 100px;
 }
+
+.pokemon-types {
+  list-style-type: none;
+}

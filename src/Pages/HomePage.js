@@ -1,4 +1,5 @@
 import PokemonCard from "../Components/PokemonCard";
+import MenuBar from "../Components/MenuBar";
 
 const HomePage = () => {
   let pokemones = []
@@ -8,6 +9,7 @@ const HomePage = () => {
 
   return (
     <div>
+      <MenuBar />
       <h1>Pokemones</h1>
       {
         pokemones
