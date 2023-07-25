@@ -1,0 +1,12 @@
+.pokemon-card {
+  width: 150px;
+  height: 250px;
+  background-color: aqua;
+  border-radius: 10px;
+  display: inline-block;
+  text-align: center;
+}
+
+.pokemon-img {
+  width: 100px;
+}
