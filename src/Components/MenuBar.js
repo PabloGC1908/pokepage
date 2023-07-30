@@ -1,19 +1,20 @@
 import {NavLink} from "react-router-dom";
+import '../Stylesheets/MenuBar.css'
 
 const MenuBar = () => {
 
 
   return (
-    <nav>
-      <ul>
+    <nav className={'menu-container'}>
+      <ul className={'menu-list'}>
         <li>
-          <NavLink to={'/'}>Inicio</NavLink>
+          <NavLink className={'nav-button'} to={'/'}>Inicio</NavLink>
         </li>
         <li>
-          <NavLink to={'/Busqueda'} >Busqueda</NavLink>
+          <NavLink className={'nav-button'} to={'/Busqueda'} >Busqueda</NavLink>
         </li>
         <li>
-          <NavLink to={'/Pokemon'} >Aleatorio</NavLink>
+          <NavLink className={'nav-button'} to={'/Pokemon'} >Aleatorio</NavLink>
         </li>
       </ul>
     </nav>

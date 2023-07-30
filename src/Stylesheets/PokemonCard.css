@@ -1,16 +1,18 @@
 .pokemon-card {
-  width: 150px;
-  height: 250px;
-  background-color: aqua;
+  width: 200px;
+  height: 300px;
+  background-color: #4b69a1;
   border-radius: 10px;
   display: inline-block;
   text-align: center;
+  margin: 0 10px 10px 0;
 }
 
 .pokemon-img {
-  width: 100px;
+  width: 150px;
 }
 
 .pokemon-types {
   list-style-type: none;
 }
+
